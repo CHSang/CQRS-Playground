@@ -25,5 +25,7 @@
     <modules>
         <!-- Level 1: one database, one table; commands and queries split in code -->
         <module>level-1-split-code</module>
+        <!-- Level 2: one database, separate write table and read table -->
+        <module>level-2-separate-tables</module>
     </modules>
 </project>
