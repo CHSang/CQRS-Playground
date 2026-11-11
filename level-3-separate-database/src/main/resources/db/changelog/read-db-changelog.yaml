@@ -1,0 +1,30 @@
+# Migrations for the READ database (bank3_read).
+# The write database is still created by Hibernate (ddl-auto).
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-account-summary
+      author: cqrs-playground
+      changes:
+        - createTable:
+            tableName: account_summary
+            columns:
+              - column:
+                  name: account_id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: owner
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: numeric(19, 2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: opened_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false

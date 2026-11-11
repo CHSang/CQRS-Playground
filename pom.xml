@@ -27,5 +27,7 @@
         <module>level-1-split-code</module>
         <!-- Level 2: one database, separate write table and read table -->
         <module>level-2-separate-tables</module>
+        <!-- Level 3: separate write database and read database, synced through RabbitMQ -->
+        <module>level-3-separate-database</module>
     </modules>
 </project>
