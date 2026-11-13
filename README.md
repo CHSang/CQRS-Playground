@@ -88,7 +88,7 @@ Other cases:
 - Invalid body (blank owner or negative deposit) gives `400`.
 
 Look at the table: open http://localhost:8081/h2-console, use JDBC URL
-`jdbc:h2:mem:bank1` and user `sa`, then run `select * from account`.
+`jdbc:h2:file:./data/bank1` and user `sa`, then run `select * from account`.
 
 ---
 
@@ -169,7 +169,7 @@ Expected:
 Unknown id gives `404`, and an invalid body gives `400`.
 
 See both tables: open http://localhost:8082/h2-console, use JDBC URL
-`jdbc:h2:mem:bank2` and user `sa`, then run:
+`jdbc:h2:file:./data/bank2` and user `sa`, then run:
 
 ```sql
 select * from account;          -- write table
@@ -296,8 +296,8 @@ curl localhost:8083/api/accounts/<id>
    `account-events`. The message rate goes up each time you open an account.
 
 6. See the two databases: open http://localhost:8083/h2-console with user `sa`:
-   - JDBC URL `jdbc:h2:mem:bank3_write`, then `select * from account;`
-   - JDBC URL `jdbc:h2:mem:bank3_read`, then `select * from account_summary;`
+   - JDBC URL `jdbc:h2:file:./data/bank3_write`, then `select * from account;`
+   - JDBC URL `jdbc:h2:file:./data/bank3_read`, then `select * from account_summary;`
      (you'll also see Liquibase's `databasechangelog` tables here)
 
 7. Stop RabbitMQ when you're done:

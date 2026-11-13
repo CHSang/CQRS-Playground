@@ -5,13 +5,13 @@ spring:
   application:
     name: level-1-split-code
   datasource:
-    url: jdbc:h2:mem:bank1;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:file:./data/bank1;AUTO_SERVER=TRUE
     username: sa
     password:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update   # keep tables and data after the app stops
     open-in-view: false
   h2:
     console:
-      enabled: true   # http://localhost:8081/h2-console  (JDBC URL: jdbc:h2:mem:bank1)
+      enabled: true   # http://localhost:8081/h2-console  (JDBC URL: jdbc:h2:file:./data/bank1)

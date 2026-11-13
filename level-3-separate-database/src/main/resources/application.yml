@@ -6,16 +6,16 @@ spring:
     name: level-3-separate-database
   # Write database: used by the command side through JPA
   datasource:
-    url: jdbc:h2:mem:bank3_write;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:file:./data/bank3_write;AUTO_SERVER=TRUE
     username: sa
     password:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update   # keep tables and data after the app stops
     open-in-view: false
   h2:
     console:
-      enabled: true   # http://localhost:8083/h2-console  (JDBC URL: jdbc:h2:mem:bank3_write or jdbc:h2:mem:bank3_read)
+      enabled: true   # http://localhost:8083/h2-console  (JDBC URL: jdbc:h2:file:./data/bank3_write or jdbc:h2:file:./data/bank3_read)
   rabbitmq:           # start it with: podman compose up -d
     host: localhost
     port: 5672
@@ -31,6 +31,6 @@ spring:
 # Read database: used by the query side through JdbcClient (see ReadDbConfig)
 app:
   read-datasource:
-    url: jdbc:h2:mem:bank3_read;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:file:./data/bank3_read;AUTO_SERVER=TRUE
     username: sa
     password:
